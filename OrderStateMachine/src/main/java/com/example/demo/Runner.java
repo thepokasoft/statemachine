@@ -22,8 +22,10 @@ public class Runner implements ApplicationRunner{
 		StateMachine<OrderStates, OrderEvents> machine = this.factory.getStateMachine("12345");
 		machine.start();
 		log.info("Current state:" +machine.getState().getId().name());
-		
-		
+		machine.sendEvent(OrderEvents.PAY);
+		log.info("Current state:" +machine.getState().getId().name());
+		machine.sendEvent(OrderEvents.FULFILL);
+		log.info("Current state:" +machine.getState().getId().name());
 	}
 
 }
